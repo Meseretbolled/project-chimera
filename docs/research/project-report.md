@@ -100,4 +100,3 @@ I prefer a Hierarchical Swarm over sequential chains to support parallel executi
 
 Github Repo: [https://github.com/Meseretbolled/project-chimera.git](https://github.com/Meseretbolled/project-chimera.git)
 
-Would you like me to generate the Mermaid code blocks for the diagrams so you can render them directly in GitHub?
