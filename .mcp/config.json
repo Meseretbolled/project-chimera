@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tenx-sense": {
+      "command": "tenx-mcp-sense",
+      "args": [],
+      "env": {}
+    }
+  }
+}
