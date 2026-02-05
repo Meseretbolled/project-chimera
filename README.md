@@ -87,16 +87,17 @@ project-chimera/
 ```bash
 git clone https://github.com/Meseretbolled/project-chimera.git
 cd project-chimera
+```
 
 2. Create and Activate a Virtual Environment
-python3 -m venv .venv
+```python3 -m venv .venv
 source .venv/bin/activate
-
+```
 3. Install Dependencies
 
 Install the project locally:
 
-pip install -e .
+```pip install -e .```
 
 ✅ Run Governance Contract Tests
 
@@ -104,7 +105,7 @@ All skills must satisfy structured contract outputs.
 
 Run the full test suite:
 
-pytest -v
+```pytest -v```
 
 
 Expected output:
@@ -115,7 +116,7 @@ Expected output:
 
 Execute the full orchestrator demo:
 
-python demo/run_demo.py
+```python demo/run_demo.py```
 
 
 This runs the complete governed pipeline:
@@ -129,6 +130,7 @@ This runs the complete governed pipeline:
 📢 Publish Only If Approved
 
 Example Output
+
 🚀 Chimera Pipeline Started...
 
 ✅ Trend Detected: AI Influencers
@@ -147,30 +149,31 @@ Example Output
 Publishing is blocked unless approval is granted.
 
 Without Approval:
-{
+```{
   "approved": false
 }
-
+```
 
 Result:
 
-{
+```{
   "publish_status": "blocked",
   "reason": "Governance rule: cannot publish without approval"
 }
-
+```
 With Approval:
-{
+```{
   "approved": true
 }
 
-
+```
 Result:
 
-{
+```{
   "publish_status": "scheduled",
   "post_id": "demo_post_001"
 }
+```
 
 📌 Implemented Skills
 Skill Agent	Purpose
