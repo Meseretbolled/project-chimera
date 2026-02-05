@@ -32,8 +32,6 @@ agent-compatible
 
 Contract: Trend Fetch Skill
 Input
-json
-Copy code
 {
   "platform": "tiktok",
   "limit": 10
@@ -59,21 +57,20 @@ output must always contain trends
 
 Contract: Content Generator Skill
 Input
-json
-Copy code
 {
   "trend_topic": "AI Influencers",
   "platform": "instagram",
   "tone": "educational"
 }
+
 Output
-json
-Copy code
 {
   "draft_caption": "AI influencers are rewriting digital culture...",
   "hashtags": ["#AI", "#Influencer"]
 }
+
 Rules
+
 caption must not be empty
 
 hashtags must be a list of strings
@@ -82,20 +79,19 @@ output is always a draft until approved
 
 Contract: Safety Validator Skill
 Input
-json
-Copy code
 {
   "content": "AI influencers are rewriting digital culture...",
   "platform": "instagram"
 }
+
 Output
-json
-Copy code
 {
   "status": "approved",
   "reason": "No policy violations detected"
 }
+
 Allowed Status Values
+
 approved
 
 rejected
@@ -103,24 +99,24 @@ rejected
 needs_human_review
 
 Contract: Publisher Skill
+
 Publishing is only allowed after validation + approval.
 
 Input
-json
-Copy code
 {
   "platform": "instagram",
   "approved_caption": "AI influencers are rewriting digital culture...",
   "hashtags": ["#AI", "#Influencer"]
 }
+
 Output
-json
-Copy code
 {
   "publish_status": "scheduled",
   "post_id": "abc123"
 }
+
 Governance Rule
+
 Publisher MUST reject execution unless:
 
 SafetyValidator status == approved
@@ -128,10 +124,12 @@ SafetyValidator status == approved
 Human approval gate is satisfied
 
 Data Storage Plan (Planned)
+
 Chimera maintains structured state in SQL.
 
 Example Tables
 trends
+
 topic
 
 score
@@ -141,6 +139,7 @@ platform
 timestamp
 
 content_items
+
 trend_id
 
 draft_text
@@ -148,10 +147,9 @@ draft_text
 status (draft/approved/published)
 
 Observability (MCP Trace)
+
 Every agent action must emit a trace event:
 
-json
-Copy code
 {
   "agent": "ResearchAgent",
   "action": "fetch_trends",
@@ -160,12 +158,17 @@ Copy code
   "input": {},
   "output": {}
 }
+
+
 MCP Sense provides auditability and governance enforcement.
 
 Execution Rule
+
 Chimera follows a deterministic pipeline:
 
 Generate → Validate → Approve → Publish
 
 No agent may publish directly without governance gates.
+
+
 
