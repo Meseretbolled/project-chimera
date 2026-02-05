@@ -1,0 +1,34 @@
+{
+  "skill_name": "content_generator",
+  "description": "Generate influencer-ready caption drafts based on a trend topic.",
+  "inputs": {
+    "trend_topic": {
+      "type": "string",
+      "required": true
+    },
+    "platform": {
+      "type": "string",
+      "allowed": ["instagram", "tiktok", "linkedin"],
+      "required": true
+    },
+    "tone": {
+      "type": "string",
+      "allowed": ["educational", "funny", "motivational"],
+      "required": true
+    }
+  },
+  "outputs": {
+    "draft_caption": {
+      "type": "string"
+    },
+    "hashtags": {
+      "type": "array",
+      "items": "string"
+    }
+  },
+  "governance": [
+    "Output is always a draft until validated",
+    "Must align with platform safety rules",
+    "Must emit MCP trace event"
+  ]
+}

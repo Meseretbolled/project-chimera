@@ -1,0 +1,26 @@
+"""
+Chimera Skill: Content Generator
+
+Generates caption + hashtag drafts from validated trend topics.
+
+All outputs require SafetyValidator approval before publishing.
+"""
+
+from typing import Dict
+
+
+def run(input: Dict) -> Dict:
+    """
+    Expected Input:
+        {
+          "trend_topic": "...",
+          "platform": "instagram",
+          "tone": "educational"
+        }
+
+    Returns:
+        {"draft_caption": "...", "hashtags": [...]}
+    """
+    raise NotImplementedError(
+        "content_generator is contract-defined but not implemented yet."
+    )

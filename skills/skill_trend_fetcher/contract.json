@@ -1,0 +1,32 @@
+{
+  "skill_name": "trend_fetcher",
+  "description": "Fetch trending topics from a platform signal source through MCP.",
+  "inputs": {
+    "platform": {
+      "type": "string",
+      "allowed": ["tiktok", "instagram", "twitter"],
+      "required": true
+    },
+    "limit": {
+      "type": "integer",
+      "min": 1,
+      "max": 50,
+      "required": true
+    }
+  },
+  "outputs": {
+    "trends": {
+      "type": "array",
+      "items": {
+        "topic": "string",
+        "score": "float",
+        "source": "string"
+      }
+    }
+  },
+  "governance": [
+    "No direct API calls allowed",
+    "Must emit MCP trace event",
+    "Output must always include trends[]"
+  ]
+}
