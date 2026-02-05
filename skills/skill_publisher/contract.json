@@ -1,0 +1,33 @@
+{
+  "skill_name": "publisher",
+  "description": "Publish approved content through MCP-controlled platform tools.",
+  "inputs": {
+    "platform": {
+      "type": "string",
+      "required": true
+    },
+    "approved_caption": {
+      "type": "string",
+      "required": true
+    },
+    "hashtags": {
+      "type": "array",
+      "items": "string",
+      "required": true
+    }
+  },
+  "outputs": {
+    "publish_status": {
+      "type": "string",
+      "allowed": ["scheduled", "posted", "rejected"]
+    },
+    "post_id": {
+      "type": "string"
+    }
+  },
+  "governance": [
+    "Publishing forbidden unless SafetyValidator status == approved",
+    "No credential access allowed",
+    "Must emit MCP trace event"
+  ]
+}
