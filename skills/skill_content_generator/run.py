@@ -1,26 +1,45 @@
 """
-Chimera Skill: Content Generator
+Content Generator Skill
 
-Generates caption + hashtag drafts from validated trend topics.
-
-All outputs require SafetyValidator approval before publishing.
+Generates a governed draft caption + hashtags from a trend topic.
+Output is always a draft until validated and approved.
 """
 
-from typing import Dict
 
-
-def run(input: Dict) -> Dict:
+def run(input: dict) -> dict:
     """
-    Expected Input:
+    Input:
         {
-          "trend_topic": "...",
+          "trend_topic": "AI Influencers",
           "platform": "instagram",
           "tone": "educational"
         }
 
-    Returns:
-        {"draft_caption": "...", "hashtags": [...]}
+    Output:
+        {
+          "draft_caption": "...",
+          "hashtags": [...]
+        }
     """
-    raise NotImplementedError(
-        "content_generator is contract-defined but not implemented yet."
+
+    topic = input.get("trend_topic")
+    platform = input.get("platform", "instagram")
+    tone = input.get("tone", "educational")
+
+    if not topic:
+        raise ValueError("trend_topic must not be empty")
+
+    caption = (
+        f"🔥 Trend Alert: {topic}\n\n"
+        f"Creators on {platform} are using this trend to reshape digital culture.\n"
+        f"Tone: {tone}.\n\n"
+        "Chimera agents detect trends, generate content, validate safety, "
+        "and publish responsibly through governance gates."
     )
+
+    hashtags = ["#AI", "#Trends", "#Chimera", "#InfluencerNetwork"]
+
+    return {
+        "draft_caption": caption,
+        "hashtags": hashtags,
+    }
