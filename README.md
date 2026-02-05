@@ -26,33 +26,56 @@ approval gates, and responsible publishing workflows.
 
 project-chimera/
 │
-├── chimera/ # Core orchestration + governance engine
-│ ├── orchestrator.py # Main pipeline coordinator
-│ ├── approval.py # Approval gate enforcement
-│ ├── state.py # Content lifecycle + status tracking
-│ └── trace.py # MCP-style tracing events
+├── chimera/                  # Core orchestration + governance engine
+│   ├── __init__.py
+│   ├── orchestrator.py       # Main pipeline coordinator
+│   ├── approval.py           # Approval gate enforcement
+│   ├── state.py              # Content lifecycle + status tracking
+│   └── trace.py              # MCP-style tracing events
 │
-├── skills/ # Modular skill agents
-│ ├── skill_trend_fetcher/
-│ │ └── run.py # Detects trending topics
-│ ├── skill_content_generator/
-│ │ └── run.py # Generates captions + hashtags
-│ ├── skill_safety_validator/
-│ │ └── run.py # Approves or blocks unsafe content
-│ └── skill_publisher/
-│ └── run.py # Publishes only when approved
+├── skills/                   # Modular skill agents
+│   ├── __init__.py
+│   │
+│   ├── skill_trend_fetcher/
+│   │   ├── contract.json
+│   │   ├── README.md
+│   │   └── run.py            # Detects trending topics
+│   │
+│   ├── skill_content_generator/
+│   │   ├── contract.json
+│   │   ├── README.md
+│   │   └── run.py            # Generates captions + hashtags
+│   │
+│   ├── skill_safety_validator/
+│   │   ├── contract.json
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   └── run.py            # Safety governance validation
+│   │
+│   └── skill_publisher/
+│       ├── contract.json
+│       ├── README.md
+│       └── run.py            # Publishes only if approved
 │
 ├── demo/
-│ └── run_demo.py # End-to-end runnable pipeline demo
+│   └── run_demo.py           # End-to-end runnable pipeline demo
 │
-├── tests/ # Governance + skill contract tests
-│ ├── test_skills_interface.py
-│ └── test_trend_fetcher.py
+├── tests/                    # Contract + governance enforcement tests
+│   ├── test_skills_interface.py
+│   └── test_trend_fetcher.py
 │
-├── docs/ # Architecture diagrams + design notes
+├── docs/                     # Architecture + diagrams + reports
+│   ├── diagram/
+│   ├── reports/
+│   └── research/
 │
-├── pyproject.toml # Project configuration
-└── README.md # Project documentation
+├── GOVERNANCE.md             # Governance rules and policies
+├── AGENT_PLAYBOOK.md         # Agent behavior + coordination guide
+├── Dockerfile                # Container support (optional)
+├── Makefile                  # Automation helpers
+├── pyproject.toml            # Project configuration
+└── README.md                 # Main documentation
+
 
 
 ---
