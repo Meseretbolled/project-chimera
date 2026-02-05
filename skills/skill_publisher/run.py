@@ -1,24 +1,32 @@
+from chimera.trace import emit_trace
+
 """
-Chimera Skill: Publisher
+Publisher Skill
 
-Executes publishing actions ONLY after governance approval.
+Publishing is strictly governed.
+This skill only schedules content if approved=True.
 """
 
-from typing import Dict
 
+def run(input: dict) -> dict:
+    approved = input.get("approved", False)
 
-def run(input: Dict) -> Dict:
-    """
-    Expected Input:
-        {
-          "platform": "instagram",
-          "approved_caption": "...",
-          "hashtags": [...]
+    if not approved:
+        return {
+            "publish_status": "blocked",
+            "reason": "Governance rule: cannot publish without approval",
         }
 
-    Returns:
-        {"publish_status": "...", "post_id": "..."}
-    """
-    raise NotImplementedError(
-        "publisher is contract-defined but not implemented yet."
-    )
+    platform = input.get("platform")
+    caption = input.get("approved_caption")
+    hashtags = input.get("hashtags", [])
+
+    if not platform or not caption:
+        raise ValueError("platform and approved_caption are required")
+
+    return {
+        "publish_status": "scheduled",
+        "platform": platform,
+        "post_id": "demo_post_001",
+        "hashtags": hashtags,
+    }

@@ -1,57 +1,62 @@
 """
-Chimera Skill Interface Tests
+Skill Interface Tests — Project Chimera
 
-These tests enforce the system-wide contract:
+These tests enforce governance contracts:
 
-- Every skill must expose a run(input: dict) -> dict interface
-- Skills must return structured outputs (never raw text)
-- Skills are bounded placeholders until implemented
+- Every skill must define run()
+- Outputs must be structured dicts
+- Publishing must be blocked unless approved
 """
 
-import pytest
+from skills.skill_trend_fetcher.run import run as fetch_trends
+from skills.skill_content_generator.run import run as generate_content
+from skills.skill_publisher.run import run as publish_content
+from skills.skill_safety_validator.run import run as validate_safety
 
 
 def test_all_skills_define_run_function():
-    """
-    Spec Rule:
-    Every Chimera skill must implement a callable `run()` entrypoint.
-    """
-
-    required_skills = [
-        "skill_trend_fetcher",
-        "skill_content_generator",
-        "skill_publisher",
-    ]
-
-    for skill in required_skills:
-        assert isinstance(skill, str)
+    assert callable(fetch_trends)
+    assert callable(generate_content)
+    assert callable(validate_safety)
+    assert callable(publish_content)
 
 
 def test_skill_outputs_must_be_structured_dict():
-    """
-    Governance Rule:
-    No skill may return unstructured strings.
-    All skills must return dict outputs matching contracts.
-    """
+    result = fetch_trends({"platform": "tiktok", "limit": 1})
+    assert isinstance(result, dict)
+    assert "trends" in result
 
-    example_output = {
-        "status": "draft",
-        "data": {}
-    }
 
-    assert isinstance(example_output, dict)
-    assert "status" in example_output
-    assert isinstance(example_output["data"], dict)
+def test_safety_validator_returns_status():
+    result = validate_safety(
+        {"content": "AI is changing everything", "platform": "instagram"}
+    )
+
+    assert "status" in result
+    assert result["status"] in ["approved", "rejected", "needs_human_review"]
 
 
 def test_publishing_is_blocked_without_approval():
-    """
-    Governance Gate:
-    Publishing cannot occur unless SafetyValidator approves.
-    """
-
-    safety_status = "rejected"
-
-    assert safety_status != "approved", (
-        "Publisher must not execute unless SafetyValidator status == approved"
+    result = publish_content(
+        {
+            "platform": "instagram",
+            "approved_caption": "Draft content",
+            "hashtags": ["#AI"],
+            "approved": False,
+        }
     )
+
+    assert result["publish_status"] == "blocked"
+
+
+def test_publishing_succeeds_with_approval():
+    result = publish_content(
+        {
+            "platform": "instagram",
+            "approved_caption": "Approved content",
+            "hashtags": ["#AI"],
+            "approved": True,
+        }
+    )
+
+    assert result["publish_status"] == "scheduled"
