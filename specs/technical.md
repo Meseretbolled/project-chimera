@@ -168,3 +168,4 @@ Chimera follows a deterministic pipeline:
 Generate → Validate → Approve → Publish
 
 No agent may publish directly without governance gates.
+
