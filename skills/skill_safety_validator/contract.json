@@ -1,0 +1,12 @@
+{
+  "skill": "safety_validator",
+  "description": "Validates generated content for policy compliance",
+  "input": {
+    "content": "string",
+    "platform": "string"
+  },
+  "output": {
+    "status": "approved | rejected | needs_human_review",
+    "reason": "string"
+  }
+}

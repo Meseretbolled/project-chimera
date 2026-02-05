@@ -1,24 +1,45 @@
 """
 Chimera Skill: Trend Fetcher
 
-This skill fetches trending topics from external sources ONLY via MCP tools.
-
-Implementation is intentionally deferred until contract tests are enforced.
+Fetches trending topics from a platform (mock implementation).
+Returns structured trend objects required by governance contracts.
 """
 
-from typing import Dict
+from datetime import datetime, timezone
+from typing import Dict, List
 
 
 def run(input: Dict) -> Dict:
     """
-    Execute trend fetching.
-
     Expected Input:
-        {"platform": "tiktok", "limit": 10}
+        {"platform": "tiktok", "limit": 3}
 
     Returns:
-        {"trends": [...]}  (contract-defined)
+        {"trends": [{"topic": "...", "score": ..., "source": "...", "timestamp": "..."}]}
     """
-    raise NotImplementedError(
-        "trend_fetcher is contract-defined but not implemented yet."
-    )
+
+    platform = input.get("platform", "tiktok")
+    limit = input.get("limit", 3)
+
+    trends: List[Dict] = [
+        {
+            "topic": "AI Influencers",
+            "score": 0.92,
+            "source": platform,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        },
+        {
+            "topic": "Smart Productivity Tools",
+            "score": 0.88,
+            "source": platform,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        },
+        {
+            "topic": "Future of Work with Agents",
+            "score": 0.84,
+            "source": platform,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        },
+    ]
+
+    return {"trends": trends[:limit]}

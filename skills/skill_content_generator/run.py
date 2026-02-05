@@ -2,8 +2,10 @@
 Content Generator Skill
 
 Generates a governed draft caption + hashtags from a trend topic.
-Output is always a draft until validated and approved.
+Includes MCP trace emission.
 """
+
+from chimera.trace import emit_trace
 
 
 def run(input: dict) -> dict:
@@ -39,7 +41,16 @@ def run(input: dict) -> dict:
 
     hashtags = ["#AI", "#Trends", "#Chimera", "#InfluencerNetwork"]
 
-    return {
+    result = {
         "draft_caption": caption,
         "hashtags": hashtags,
     }
+
+    emit_trace(
+        agent="ContentAgent",
+        action="generate_caption",
+        input_payload=input,
+        output_payload=result,
+    )
+
+    return result
