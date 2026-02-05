@@ -36,8 +36,9 @@ Input
   "platform": "tiktok",
   "limit": 10
 }
-
 Output
+json
+Copy code
 {
   "trends": [
     {
@@ -47,9 +48,7 @@ Output
     }
   ]
 }
-
 Rules
-
 platform must be a supported string
 
 limit must be an integer > 0
