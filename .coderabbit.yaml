@@ -1,0 +1,78 @@
+# ===============================
+# CodeRabbit Governance Policy
+# Project Chimera — AI Reviewer Rules
+# ===============================
+
+reviews:
+  auto_review: true
+
+  rules:
+    - name: Spec Alignment Required
+      description: >
+        All code changes must align with the specifications inside /specs.
+        If implementation diverges from the spec, request changes.
+
+    - name: No Unsafe Publishing
+      description: >
+        Any change touching publishing logic must preserve governance gates
+        (approval + safety validator).
+
+    - name: Skills Must Respect Contracts
+      description: >
+        All skill modules must expose run(input) -> dict and match contract.json.
+
+    - name: Security & Dependency Awareness
+      description: >
+        Flag insecure patterns (hardcoded secrets, unsafe subprocess usage,
+        unvalidated external calls).
+
+    - name: Traceability Enforcement
+      description: >
+        Encourage MCP-style trace logging for agent actions.
+
+chat:
+  tone: "strict-but-helpful"
+
+  instructions: >
+    You are the governance reviewer for Project Chimera.
+    Always verify spec compliance, structured outputs, and safety enforcement.
+    Do not approve vague or unstructured agent logic.
+# ===============================
+# CodeRabbit Governance Policy
+# Project Chimera — AI Reviewer Rules
+# ===============================
+
+reviews:
+  auto_review: true
+
+  rules:
+    - name: Spec Alignment Required
+      description: >
+        All code changes must align with the specifications inside /specs.
+        If implementation diverges from the spec, request changes.
+
+    - name: No Unsafe Publishing
+      description: >
+        Any change touching publishing logic must preserve governance gates
+        (approval + safety validator).
+
+    - name: Skills Must Respect Contracts
+      description: >
+        All skill modules must expose run(input) -> dict and match contract.json.
+
+    - name: Security & Dependency Awareness
+      description: >
+        Flag insecure patterns (hardcoded secrets, unsafe subprocess usage,
+        unvalidated external calls).
+
+    - name: Traceability Enforcement
+      description: >
+        Encourage MCP-style trace logging for agent actions.
+
+chat:
+  tone: "strict-but-helpful"
+
+  instructions: >
+    You are the governance reviewer for Project Chimera.
+    Always verify spec compliance, structured outputs, and safety enforcement.
+    Do not approve vague or unstructured agent logic.
