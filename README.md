@@ -1,217 +1,243 @@
-# 🚀 Project Chimera — Governed AI Skill Pipeline
+# 🧠 Project Chimera — Governed Agentic Content Pipeline
 
-Project Chimera is a modular AI-agent orchestration system that detects trends,
-generates content drafts, validates safety through governance rules,
-and publishes only when approved.
+Project Chimera is a **spec-driven, governed multi-agent content automation system** designed to simulate Autonomous AI Influencers.
 
-It demonstrates **contract-enforced agent pipelines** with MCP-style tracing,
-approval gates, and responsible publishing workflows.
+It detects social trends, generates platform-ready content, validates safety, and publishes only through **human-in-the-loop approval gates**.
 
----
+This repository was built as part of the **Project Chimera 3-Day Architecture Challenge**, emphasizing:
 
-## ✨ Key Features
-
-- ✅ Modular skill-based agent architecture  
-- 📈 Trend detection skill (Trend Fetcher)  
-- 📝 Caption + hashtag generation (Content Generator)  
-- 🛡 Safety validation governance gate  
-- 🚫 Publishing blocked unless explicitly approved  
-- 📢 Publisher skill schedules approved content  
-- 📡 MCP-style trace logging for transparency  
-- 🧪 Full contract enforcement via pytest  
+- Spec-Driven Development (SDD)
+- Agent skill contract enforcement
+- Governance-first automation
+- MCP-style traceability
+- CI/CD + Docker reproducibility
+- Test-defined future expansion slots
 
 ---
 
-## 📂 Repository Structure
+## 🚀 What Chimera Does
 
+Chimera simulates an autonomous influencer pipeline:
+
+1. **Trend Detection Agent**  
+   Fetches trending topics from a platform source.
+
+2. **Content Generation Agent**  
+   Produces caption drafts and hashtags.
+
+3. **Safety Validator Agent**  
+   Ensures generated content meets governance rules.
+
+4. **Publishing Agent (Governed)**  
+   Blocks publishing unless explicitly approved.
+
+5. **Orchestrator**  
+   Executes the full lifecycle with state transitions.
+
+---
+
+## 📌 Spec-Driven Development (SDD)
+
+Chimera follows **Spec-Driven Development**, meaning:
+
+- All system intent is defined first inside `specs/`
+- Skills must match structured contracts
+- Agents are forbidden to “vibe-code” outside specification boundaries
+
+Specifications are the single source of truth for:
+
+- Skill input/output schemas  
+- Governance rules  
+- OpenClaw integration roadmap  
+- Metadata + publishing workflows  
+
+---
+
+## 👤 Human-in-the-Loop Governance
+
+Publishing is never automatic.
+
+Chimera enforces a mandatory approval gate:
+
+This ensures responsible automation and controlled deployment.
+
+📂 Repository Structure
+```
 project-chimera/
 │
-├── chimera/                  # Core orchestration + governance engine
-│   ├── __init__.py
-│   ├── orchestrator.py       # Main pipeline coordinator
-│   ├── approval.py           # Approval gate enforcement
-│   ├── state.py              # Content lifecycle + status tracking
-│   └── trace.py              # MCP-style tracing events
+├── chimera/                     # Core orchestrator + governance engine
+│   ├── orchestrator.py           # Executes full pipeline
+│   ├── state.py                  # Content lifecycle state machine
+│   ├── approval.py               # Governance approval gate logic
+│   └── trace.py                  # MCP-style trace event logger
 │
-├── skills/                   # Modular skill agents
-│   ├── __init__.py
-│   │
-│   ├── skill_trend_fetcher/
-│   │   ├── contract.json
-│   │   ├── README.md
-│   │   └── run.py            # Detects trending topics
-│   │
-│   ├── skill_content_generator/
-│   │   ├── contract.json
-│   │   ├── README.md
-│   │   └── run.py            # Generates captions + hashtags
-│   │
-│   ├── skill_safety_validator/
-│   │   ├── contract.json
-│   │   ├── README.md
-│   │   ├── __init__.py
-│   │   └── run.py            # Safety governance validation
-│   │
-│   └── skill_publisher/
-│       ├── contract.json
-│       ├── README.md
-│       └── run.py            # Publishes only if approved
+├── skills/                      # Modular runtime skill agents
+│   ├── skill_trend_fetcher/      # Detects trends
+│   ├── skill_content_generator/  # Generates captions + hashtags
+│   ├── skill_safety_validator/   # Validates content safety
+│   └── skill_publisher/          # Governed publishing enforcement
+│
+├── specs/                       # Executable project intent (SDD source)
+│   ├── _meta.md
+│   ├── functional.md
+│   ├── technical.md
+│   └── openclaw_integration.md
+│
+├── tests/                       # Contract + governance enforcement tests
+│   ├── test_skills_interface.py
+│   ├── test_trend_fetcher.py
+│   └── test_openclaw_future.py  # Intentional failing future slot
 │
 ├── demo/
-│   └── run_demo.py           # End-to-end runnable pipeline demo
+│   └── run_demo.py              # Runs the full Chimera pipeline
 │
-├── tests/                    # Contract + governance enforcement tests
-│   ├── test_skills_interface.py
-│   └── test_trend_fetcher.py
-│
-├── docs/                     # Architecture + diagrams + reports
-│   ├── diagram/
-│   ├── reports/
-│   └── research/
-│
-├── GOVERNANCE.md             # Governance rules and policies
-├── AGENT_PLAYBOOK.md         # Agent behavior + coordination guide
-├── Dockerfile                # Container support (optional)
-├── Makefile                  # Automation helpers
-├── pyproject.toml            # Project configuration
-└── README.md                 # Main documentation
+├── Dockerfile                   # Containerized reproducibility
+├── Makefile                     # Standard execution commands
+├── .github/workflows/main.yml   # CI pipeline (make test)
+├── GOVERNANCE.md                # Governance + safety policy
+└── README.md
+```
+⚙️ Installation (Local)
 
-
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Meseretbolled/project-chimera.git
+Clone the repository:
+```git clone https://github.com/Meseretbolled/project-chimera.git
 cd project-chimera
 ```
+Create and activate a virtual environment:
 
-2. Create and Activate a Virtual Environment
-```python3 -m venv .venv
+``` python3 -m venv .venv
 source .venv/bin/activate
 ```
-3. Install Dependencies
-
-Install the project locally:
-
-```pip install -e .```
-
-✅ Run Governance Contract Tests
-
-All skills must satisfy structured contract outputs.
-
-Run the full test suite:
-
-```pytest -v```
 
 
-Expected output:
+Install dependencies:
 
-7 passed
+``` pip install -e .````
 
-▶️ Run the Chimera Demo Pipeline
+✅ Running Unit Tests (TDD + Future Slot)
 
-Execute the full orchestrator demo:
+Run all tests:
+
+``` pytest -v ```
+
+
+Expected result:
+
+Core skills + governance tests pass
+
+One test may fail intentionally:
+
+``` test_openclaw_future.py ```
+
+This defines a future integration slot for broadcasting Chimera status to the OpenClaw Agent Social Network.
+
+Example:
+
+``` 1 failed, 7 passed ```
+
+
+This is intentional and demonstrates true TDD:
+
+The test defines the next capability boundary before implementation.
+
+🎬 Running the Full Demo Pipeline
+
+Run Chimera end-to-end:
 
 ```python demo/run_demo.py```
 
 
-This runs the complete governed pipeline:
-
-📈 Fetch Trends
-
-📝 Generate Draft Caption
-
-🛡 Validate Safety
-
-📢 Publish Only If Approved
-
-Example Output
+Example output:
 
 🚀 Chimera Pipeline Started...
-
 ✅ Trend Detected: AI Influencers
-
-📝 Draft Caption Generated:
-🔥 Trend Alert: AI Influencers...
-
+📝 Draft Caption Generated...
 🛡 Safety Validator Status: approved
-
 📢 Publish Result: scheduled
-
 ✅ Chimera Pipeline Completed Successfully!
 
-🛡 Governance + Approval Rule
+🐳 Running Chimera with Docker
 
-Publishing is blocked unless approval is granted.
+Build the container:
 
-Without Approval:
-```{
-  "approved": false
+``` docker build -t chimera .
+```
+
+Run the test suite inside Docker:
+
+``` docker run chimera ```
+
+🛠 Makefile Commands
+
+Standardized developer commands:
+```
+make install       # Install project locally
+make test          # Run pytest suite
+make demo          # Run full orchestrator pipeline
+make docker-build  # Build Docker image
+make docker-run    # Run tests inside Docker
+```
+🔁 CI/CD & AI Governance
+
+Chimera includes an automated governance pipeline:
+
+GitHub Actions runs make test on every push
+
+Workflow defined in:
+```
+.github/workflows/main.yml
+```
+
+Future expansion includes AI reviewer enforcement (CodeRabbit-style spec alignment).
+
+📡 MCP Trace Logging
+
+Each agent emits structured trace events:
+```
+{
+  "agent": "ContentAgent",
+  "action": "generate_caption",
+  "input": {...},
+  "output": {...}
 }
 ```
 
-Result:
+This provides full observability across the autonomous pipeline.
 
-```{
-  "publish_status": "blocked",
-  "reason": "Governance rule: cannot publish without approval"
-}
-```
-With Approval:
-```{
-  "approved": true
-}
+🎥 Loom Walkthrough (Submission)
 
-```
-Result:
+The Loom demo covers:
 
-```{
-  "publish_status": "scheduled",
-  "post_id": "demo_post_001"
-}
-```
+Spec structure + governance intent
 
-📌 Implemented Skills
-Skill Agent	Purpose
-Trend Fetcher	Returns trending topics with scores + timestamps
-Content Generator	Creates captions + hashtags from trends
-Safety Validator	Ensures content meets governance standards
-Publisher	Publishes only when approved
-📡 MCP Trace Transparency
+Skill modularity + contracts
 
-Chimera emits structured trace events such as:
+Approval-based publishing enforcement
 
-Agent name
+TDD approach with future failing slot
 
-Action performed
+Docker reproducibility
 
-Input payload
+OpenClaw integration roadmap
 
-Output result
+📌 Loom Video Link: (to be added before submission)
 
-Timestamp
+✅ Challenge Completion Summary
 
-This provides auditability and responsible AI governance.
+This repository satisfies the Project Chimera Challenge requirements:
 
-✅ Project Status
+Spec-driven architecture (specs/)
 
-Project Chimera successfully demonstrates:
+Modular agent skills (skills/)
 
-Modular governed skill pipelines
+Governance enforcement + approval gates
 
-Approval-based publishing control
+Contract-based testing (tests/)
 
-End-to-end orchestration demo
+Intentional future slot test for OpenClaw expansion
 
-Full contract validation through tests
+Docker + Makefile automation
 
-MCP-style transparency tracing
+CI pipeline via GitHub Actions
 
-👩‍💻 Author
-
-Built by Meseret ✨
-Project Chimera — Governed Agent Pipeline Demo
+MCP-style traceability + observability

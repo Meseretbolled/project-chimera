@@ -1,23 +1,29 @@
 # Project Chimera — Developer Commands
 
-.PHONY: help install test demo docker-build docker-run
+.PHONY: help setup install test demo docker-build docker-run
 
 help:
 	@echo "Available commands:"
+	@echo "  make setup         Create environment + install deps (uv)"
 	@echo "  make install       Install project locally"
 	@echo "  make test          Run pytest suite"
 	@echo "  make demo          Run Chimera pipeline demo"
 	@echo "  make docker-build  Build Docker image"
 	@echo "  make docker-run    Run tests inside Docker"
 
+# Golden Environment Setup (Challenge Requirement)
+setup:
+	uv venv
+	uv pip install -e .
+
 install:
-	pip install -e .
+	uv pip install -e .
 
 test:
-	pytest -v
+	uv run pytest -v
 
 demo:
-	python demo/run_demo.py
+	uv run python demo/run_demo.py
 
 docker-build:
 	docker build -t chimera .
