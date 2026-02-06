@@ -1,0 +1,16 @@
+{
+  "version": "0.1.0",
+  "skills": [
+    {
+      "name": "trend_fetcher",
+      "entrypoint": "skills/skill_trend_fetcher/run.py",
+      "input_schema": "specs/schemas/trend_fetcher.json",
+      "output_schema": "specs/schemas/trend_fetcher.json"
+    },
+    {
+      "name": "publisher",
+      "entrypoint": "skills/skill_publisher/run.py",
+      "governance": true
+    }
+  ]
+}
