@@ -95,6 +95,7 @@ project-chimera/
 ├── Makefile                     # Standard execution commands
 ├── .github/workflows/main.yml   # CI pipeline (make test)
 ├── GOVERNANCE.md                # Governance + safety policy
+|--.coderabbit.yaml
 └── README.md
 ```
 ⚙️ Installation (Local)
