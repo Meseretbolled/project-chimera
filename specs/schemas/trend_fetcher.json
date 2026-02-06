@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Trend Fetcher Output",
+  "type": "object",
+  "properties": {
+    "trends": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "topic": { "type": "string" },
+          "score": { "type": "number" },
+          "source": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["topic", "score", "source", "timestamp"],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": ["trends"],
+  "additionalProperties": false
+}

@@ -161,8 +161,7 @@ Example output:
 
 Build the container:
 
-``` docker build -t chimera .
-```
+``` docker build -t chimera```
 
 Run the test suite inside Docker:
 
@@ -185,27 +184,23 @@ Chimera includes an automated governance pipeline:
 GitHub Actions runs make test on every push
 
 Workflow defined in:
-```
-.github/workflows/main.yml
-```
+```.github/workflows/main.yml```
 
 Future expansion includes AI reviewer enforcement (CodeRabbit-style spec alignment).
 
 📡 MCP Trace Logging
 
 Each agent emits structured trace events:
-```
-{
+```{
   "agent": "ContentAgent",
   "action": "generate_caption",
   "input": {...},
   "output": {...}
-}
-```
+}```
 
 This provides full observability across the autonomous pipeline.
 
-🎥 Loom Walkthrough (Submission)
+🎥 Loom Walkthrough https://www.loom.com/share/b4153b36bcb14f7488ac871d456665fe
 
 The Loom demo covers:
 
@@ -221,7 +216,7 @@ Docker reproducibility
 
 OpenClaw integration roadmap
 
-📌 Loom Video Link: (to be added before submission)
+📌 Loom Video Link: ([to be added before submission](https://www.loom.com/share/b4153b36bcb14f7488ac871d456665fe))
 
 ✅ Challenge Completion Summary
 

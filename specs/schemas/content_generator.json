@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Content Generator Output",
+  "type": "object",
+  "properties": {
+    "draft_caption": { "type": "string" },
+    "hashtags": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["draft_caption", "hashtags"],
+  "additionalProperties": false
+}
