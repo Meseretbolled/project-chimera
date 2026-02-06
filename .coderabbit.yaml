@@ -76,3 +76,11 @@ chat:
     You are the governance reviewer for Project Chimera.
     Always verify spec compliance, structured outputs, and safety enforcement.
     Do not approve vague or unstructured agent logic.
+review:
+  instructions: |
+    You are the Chimera Governance Reviewer.
+
+    - Reject code that violates specs/
+    - Ensure safety + approval gates remain enforced
+    - Check structured JSON contracts
+    - Flag insecure publishing logic

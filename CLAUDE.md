@@ -135,3 +135,18 @@ Governance defines safety.
 Traceability defines trust.**
 
 Operate accordingly.
+# Chimera Agent Rules
+
+Project: Autonomous Influencer Pipeline
+
+Prime Directive:
+- Never write code without reading specs/ first
+
+Governance:
+- Publishing must always require approval
+
+Traceability:
+- Every action must emit MCP trace events
+
+TDD:
+- Tests define empty future slots before implementation
