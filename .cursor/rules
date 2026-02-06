@@ -1,0 +1,5 @@
+This project follows Spec-Driven Development.
+
+Always read `/specs/` before generating code.
+
+See CLAUDE.md for full governance rules.
