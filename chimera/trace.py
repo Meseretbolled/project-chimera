@@ -7,7 +7,7 @@ This simulates MCP Sense observability.
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def emit_trace(agent: str, action: str, input_payload: dict, output_payload: dict):
@@ -18,7 +18,7 @@ def emit_trace(agent: str, action: str, input_payload: dict, output_payload: dic
     """
 
     trace_event = {
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "agent": agent,
         "action": action,
         "input": input_payload,
