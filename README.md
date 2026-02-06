@@ -113,7 +113,7 @@ source .venv/bin/activate
 
 Install dependencies:
 
-``` pip install -e .````
+```pip install -e```
 
 ✅ Running Unit Tests (TDD + Future Slot)
 
@@ -191,6 +191,7 @@ Future expansion includes AI reviewer enforcement (CodeRabbit-style spec alignme
 📡 MCP Trace Logging
 
 Each agent emits structured trace events:
+
 ```{
   "agent": "ContentAgent",
   "action": "generate_caption",
@@ -216,7 +217,10 @@ Docker reproducibility
 
 OpenClaw integration roadmap
 
-📌 Loom Video Link: ([to be added before submission](https://www.loom.com/share/b4153b36bcb14f7488ac871d456665fe))
+## 🎥 Loom Walkthrough Video
+
+📌 Loom Video Link: [Project Chimera Walkthrough](https://www.loom.com/share/b4153b36bcb14f7488ac871d456665fe)
+
 
 ✅ Challenge Completion Summary
 
